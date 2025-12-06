@@ -612,13 +612,52 @@
       </div>
     </section>
 
-    <!-- About -->
+        <!-- About -->
     <section id="about">
       <h2>About EyeKnowMD</h2>
       <p class="lead">
-        EyeKnowMD is an education-focused project created by a <strong>Patient Services Specialist / Eye Care Educator</strong>
-        who works closely with patients, opticians, and optometrists.
+        EyeKnowMD is an education-focused project created by
+        <strong>Niamul Hasan</strong>, an <strong>Eye Care Educator &amp; Patient Services Specialist</strong>
+        with hands-on experience in opticianry, lensometry, and patient-centered optical care.
       </p>
+
+      <div class="two-col">
+        <div class="about-box">
+          <h3>Niamul Hasan</h3>
+          <p class="about-meta">
+            Eye Care Educator &bull; Patient Services Specialist
+          </p>
+          <p>
+            Every day in clinic, people leave with questions: “What is astigmatism?”,
+            “Why do I need progressives?”, “Is screen time ruining my eyes?”.
+          </p>
+          <p style="margin-top:0.5rem;">
+            I created <strong>EyeKnowMD</strong> to answer those questions clearly. My focus is to:
+          </p>
+          <ul class="hero-list" style="margin-top:0.5rem;">
+            <li><span class="icon">•</span><span>Give patients simple, trustworthy explanations of their prescriptions and eye conditions.</span></li>
+            <li><span class="icon">•</span><span>Support opticianry and optometry students with exam-style concepts and practical examples.</span></li>
+            <li><span class="icon">•</span><span>Help new clinic staff understand the “language” of eye care.</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>What you can expect here</h3>
+          <p>
+            EyeKnowMD combines clinical experience with clear teaching. Content is designed to be:
+          </p>
+          <ul class="hero-list" style="margin-top:0.5rem;">
+            <li><span class="icon">•</span><span><strong>Evidence-based</strong>, but explained in plain language.</span></li>
+            <li><span class="icon">•</span><span><strong>Practical</strong> — focused on real prescriptions, lenses, and everyday eye problems.</span></li>
+            <li><span class="icon">•</span><span><strong>Exam-friendly</strong> — helpful for students reviewing key optical concepts.</span></li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.85rem;color:var(--muted);">
+            Over time, this will grow into a collection of lessons, diagrams, and revision notes you can revisit anytime.
+          </p>
+        </div>
+      </div>
+    </section>
+
 
       <div class="two-col">
         <div class="about-box">
