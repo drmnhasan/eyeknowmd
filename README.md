@@ -1,1 +1,696 @@
-# eyeknowmd
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EyeKnowMD - Clear Vision, Clear Knowledge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EyeKnowMD - Clear, simple education about opticianry, optometry, ophthalmic disease, and eye care.">
+  <style>
+    :root {
+      --primary: #0b8793;
+      --primary-dark: #0a6b74;
+      --bg: #f5f7fb;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 247, 251, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span.eye {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 2px solid var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      padding-bottom: 0.1rem;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+      border-color: var(--primary);
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding: 2.5rem 1.5rem;
+      margin-top: 1rem;
+      border-radius: 1.5rem;
+      background: radial-gradient(circle at top left, #e0f4ff 0, #f5f7fb 50%, #ffffff 100%);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(11, 135, 147, 0.08);
+      color: var(--primary-dark);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 span.highlight {
+      color: var(--primary-dark);
+    }
+
+    .hero p.sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+      max-width: 34rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      padding: 0.6rem 1.3rem;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(15, 118, 110, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 118, 110, 0.4);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary-dark);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-meta span.dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.9);
+    }
+
+    /* Hero card */
+    .hero-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 1.35rem;
+      padding: 1.3rem 1.2rem 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      font-size: 0.9rem;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(14, 165, 233, 0.12);
+      color: #0369a1;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-list li span.icon {
+      font-size: 0.9rem;
+      margin-top: 0.1rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px dashed rgba(148, 163, 184, 0.6);
+      padding-top: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    section p.lead {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 1.2rem;
+      max-width: 38rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07);
+    }
+
+    .card h3 {
+      font-size: 1.03rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #4b5563;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Lessons list */
+    .lesson-list {
+      list-style: none;
+      margin-top: 0.6rem;
+    }
+
+    .lesson-list li {
+      padding: 0.55rem 0;
+      border-bottom: 1px dashed rgba(226, 232, 240, 0.9);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .lesson-list span.tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Two-column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    /* About */
+    .about-box {
+      background: var(--card-bg);
+      border-radius: 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 1rem 1.1rem;
+      box-shadow: 0 8px 20px rgba(148, 163, 184, 0.3);
+    }
+
+    .about-box h3 {
+      margin-bottom: 0.35rem;
+    }
+
+    .about-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    /* Contact */
+    .contact-box {
+      background: var(--card-bg);
+      border-radius: 1.1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .contact-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-box a.link {
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    footer {
+      padding-top: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.5rem 1.2rem;
+      }
+
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <span class="eye">👁️</span>
+        <span>EyeKnowMD</span>
+      </div>
+      <div class="nav-links">
+        <a href="#learn">Learn</a>
+        <a href="#topics">Topics</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div>
+        <div class="badge">
+          Evidence-based • Easy to understand
+        </div>
+        <h1>
+          EyeKnowMD — <span class="highlight">Clear Vision, Clear Knowledge</span>
+        </h1>
+        <p class="sub">
+          Simple, trustworthy education about <strong>opticianry, optometry, ophthalmic disease</strong>, and
+          everyday <strong>eye care</strong> — created for students, patients, and anyone who wants to understand their eyes better.
+        </p>
+        <div class="hero-actions">
+          <a href="#learn">
+            <button class="btn btn-primary">
+              Start Learning Now →
+            </button>
+          </a>
+          <a href="#topics">
+            <button class="btn btn-ghost">
+              Browse Eye Topics
+            </button>
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span>✅ Patient-friendly explanations</span>
+          <span class="dot"></span>
+          <span>📚 Optician / optometry focused</span>
+          <span class="dot"></span>
+          <span>🧠 Built by an Eye Care Educator</span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Quick learning snapshot">
+        <div class="hero-card-title">
+          <span>Today’s Focus: “What does my glasses prescription mean?”</span>
+          <span class="chip">Mini Lesson</span>
+        </div>
+        <p>
+          Your glasses Rx is a recipe that tells the lab how to bend light so it lands sharply on your retina.
+          Each line has a job:
+        </p>
+        <ul class="hero-list">
+          <li>
+            <span class="icon">•</span>
+            <span><strong>Sphere (SPH)</strong> — how short- or long-sighted you are.</span>
+          </li>
+          <li>
+            <span class="icon">•</span>
+            <span><strong>Cylinder (CYL)</strong> &amp; <strong>Axis</strong> — astigmatism (how “stretched” the focus is and in which direction).</span>
+          </li>
+          <li>
+            <span class="icon">•</span>
+            <span><strong>Add</strong> — extra power at near for reading / multifocals.</span>
+          </li>
+        </ul>
+        <p class="hero-tagline">
+          On EyeKnowMD, you’ll find similar short lessons on PD, base curve, progressive lenses, cataracts,
+          glaucoma, dry eye and more — all in plain language.
+        </p>
+      </aside>
+    </section>
+
+    <!-- Learn section -->
+    <section id="learn">
+      <h2>Start with the basics of eye & lens education</h2>
+      <p class="lead">
+        EyeKnowMD is starting with <strong>Eye Care and Opticianry Education</strong>. These core areas will grow into
+        step-by-step guides, diagrams, and short lessons you can read in a few minutes.
+      </p>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Opticianry Foundations</h3>
+          <p>
+            Understand prescriptions, PD, lenses, frames, and how everything works together to give clear vision.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Glasses Rx explained</span>
+            <span class="pill">PD & fitting</span>
+            <span class="pill">Lens types</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Optometry & Refraction</h3>
+          <p>
+            Learn what happens in the exam room — visual acuity, refraction, and how optometrists decide on your
+            final prescription.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Eye exam steps</span>
+            <span class="pill">Refraction basics</span>
+            <span class="pill">Binocular vision</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Eye Care & Daily Habits</h3>
+          <p>
+            Simple, practical tips to protect your eyes: screen use, contact lens safety, UV protection, and when to
+            see an eye care professional.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Screen breaks</span>
+            <span class="pill">Dry eye relief</span>
+            <span class="pill">Blue light & UV</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Topics section -->
+    <section id="topics">
+      <h2>Eye topics we’ll cover</h2>
+      <p class="lead">
+        As EyeKnowMD grows, these categories will expand into short articles, infographics, and revision notes —
+        useful for both <strong>patients</strong> and <strong>students</strong>.
+      </p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Sample mini-lessons</h3>
+          <ul class="lesson-list">
+            <li>
+              <span>What is PD (Pupillary Distance) and why does it matter?</span>
+              <span class="tag">Opticianry</span>
+            </li>
+            <li>
+              <span>Single-vision vs bifocal vs progressive lenses</span>
+              <span class="tag">Lenses</span>
+            </li>
+            <li>
+              <span>“I have astigmatism” — what does that actually mean?</span>
+              <span class="tag">Optometry</span>
+            </li>
+            <li>
+              <span>Common eye diseases: cataract, glaucoma, diabetic eye changes</span>
+              <span class="tag">Ophthalmic disease</span>
+            </li>
+            <li>
+              <span>Contact lens do’s & don’ts (the safe way!)</span>
+              <span class="tag">Eye care</span>
+            </li>
+          </ul>
+          <p style="font-size:0.85rem;color:var(--muted);margin-top:0.6rem;">
+            More lessons will be added over time — this site is designed to grow with new topics and visuals.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <h3>For students & trainees</h3>
+            <p>
+              Quick refreshers on key concepts for opticianry and optometry students — written in a way that is easy
+              to review before exams or practicals.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>For patients & families</h3>
+            <p>
+              No heavy jargon. Just clear explanations you can take to your next appointment and feel more confident
+              about your eye health.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About EyeKnowMD</h2>
+      <p class="lead">
+        EyeKnowMD is an education-focused project created by a <strong>Patient Services Specialist / Eye Care Educator</strong>
+        who works closely with patients, opticians, and optometrists.
+      </p>
+
+      <div class="two-col">
+        <div class="about-box">
+          <h3>Your Eye Care Educator</h3>
+          <p class="about-meta">
+            Patient Services Specialist • Eye Care Educator
+          </p>
+          <p>
+            Every day, people leave the clinic with questions: “What is astigmatism?”, “Why do I need progressives?”,
+            “Is screen time ruining my eyes?”.  
+          </p>
+          <p style="margin-top:0.5rem;">
+            EyeKnowMD exists to bridge that gap — by turning complex optical concepts into clear, friendly lessons.
+            The goal is to support:
+          </p>
+          <ul class="hero-list" style="margin-top:0.5rem;">
+            <li><span class="icon">•</span><span>Patients who want to understand their diagnosis and glasses.</span></li>
+            <li><span class="icon">•</span><span>Students preparing for opticianry / optometry exams.</span></li>
+            <li><span class="icon">•</span><span>New staff in eye clinics who are learning eye-care language.</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Future direction</h3>
+          <p>
+            The first step is building clear written content. Over time, EyeKnowMD can grow to include:
+          </p>
+          <ul class="hero-list" style="margin-top:0.5rem;">
+            <li><span class="icon">•</span><span>Downloadable PDFs and cheat-sheets.</span></li>
+            <li><span class="icon">•</span><span>Short explainer videos and diagrams.</span></li>
+            <li><span class="icon">•</span><span>Exam-style practice questions for optical students.</span></li>
+          </ul>
+          <p style="margin-top:0.6rem;font-size:0.85rem;color:var(--muted);">
+            For now, this site is intentionally simple: fast to load, easy to read, and focused on solid understanding.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact & feedback</h2>
+      <p class="lead">
+        Have a topic you’d like explained? Found something confusing in your own prescription or eye report?
+        You’re welcome to reach out.
+      </p>
+
+      <div class="contact-box">
+        <p>
+          Replace this text with your real contact method (for example: a dedicated email address, contact form, or
+          social profile you’re comfortable sharing):
+        </p>
+        <p>
+          📧 Email:
+          <a class="link" href="mailto:you@eyeknowmd.com">you@eyeknowmd.com</a>
+        </p>
+        <p style="font-size:0.85rem;color:var(--muted);margin-top:0.4rem;">
+          *Disclaimer: EyeKnowMD is an educational resource and does not replace a comprehensive eye exam or medical
+          advice from your own eye care professional.*
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> EyeKnowMD. All rights reserved.</p>
+      <p>Educational content only • This site does not provide personal medical advice.</p>
+    </footer>
+  </main>
+
+  <script>
+    // Set current year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
