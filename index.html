@@ -2,1067 +2,240 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EyeKnowMD - Clear Vision, Clear Knowledge</title>
+  <title>Try Frames Online - EyeKnowMD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EyeKnowMD - Clear, simple education about opticianry, optometry, ophthalmic disease, and eye care.">
   <style>
-    :root {
-      --primary: #0b8793;
-      --primary-dark: #0a6b74;
-      --bg: #f5f7fb;
-      --text: #1f2933;
-      --muted: #6b7280;
-      --card-bg: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(245, 247, 251, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-    }
-
-    .nav {
-      max-width: 1080px;
-      margin: 0 auto;
+      width: 100%;
       padding: 0.75rem 1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      align-items: center;
+      box-sizing: border-box;
     }
-
-    .logo {
+    header .logo {
       font-weight: 700;
-      font-size: 1.1rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
+      color: #e5e7eb;
     }
-
-    .logo span.eye {
-      width: 26px;
-      height: 26px;
+    header .logo span.eye {
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
-      border: 2px solid var(--primary);
+      border: 2px solid #22c55e;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 0.75rem;
-      color: var(--primary);
     }
-
-    .nav-links {
-      display: flex;
-      gap: 1.25rem;
-      font-size: 0.95rem;
-      flex-wrap: wrap;
+    header a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.9rem;
     }
-
-    .nav-links a {
-      color: var(--muted);
-      padding-bottom: 0.1rem;
-      border-bottom: 2px solid transparent;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary-dark);
-      border-color: var(--primary);
+    header a:hover {
+      color: #e5e7eb;
     }
 
     main {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 3rem;
-    }
-
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
-      gap: 2.5rem;
-      align-items: center;
-      padding: 2.5rem 1.5rem;
-      margin-top: 1rem;
-      border-radius: 1.5rem;
-      background: radial-gradient(circle at top left, #e0f4ff 0, #f5f7fb 50%, #ffffff 100%);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(11, 135, 147, 0.08);
-      color: var(--primary-dark);
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.6rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
-      margin-bottom: 0.75rem;
-    }
-
-    .hero h1 span.highlight {
-      color: var(--primary-dark);
-    }
-
-    .hero p.sub {
-      color: var(--muted);
-      font-size: 0.98rem;
-      margin-bottom: 1.25rem;
-      max-width: 34rem;
-    }
-
-    .hero-actions {
+      flex: 1;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn {
-      display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      border-radius: 999px;
-      padding: 0.6rem 1.3rem;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      padding: 1.5rem 1rem 2rem;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 900px;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #fff;
-      box-shadow: 0 10px 25px rgba(15, 118, 110, 0.35);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(15, 118, 110, 0.4);
-    }
-
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--primary-dark);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-    }
-
-    .btn-ghost:hover {
-      background: #ffffff;
-      transform: translateY(-1px);
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .hero-meta span.dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.9);
-    }
-
-    /* Hero card */
-    .hero-card {
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 1.35rem;
-      padding: 1.3rem 1.2rem 1.4rem;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
-      font-size: 0.9rem;
-    }
-
-    .hero-card-title {
-      font-weight: 600;
+    h1 {
+      font-size: 1.7rem;
       margin-bottom: 0.3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .chip {
-      font-size: 0.7rem;
-      padding: 0.18rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(14, 165, 233, 0.12);
-      color: #0369a1;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-
-    .hero-card p {
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-list {
-      list-style: none;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.4rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .hero-list li span.icon {
-      font-size: 0.9rem;
-      margin-top: 0.1rem;
-    }
-
-    .hero-tagline {
-      font-size: 0.8rem;
-      color: var(--muted);
-      border-top: 1px dashed rgba(148, 163, 184, 0.6);
-      padding-top: 0.6rem;
-      margin-top: 0.4rem;
-    }
-
-    section {
-      margin-top: 2.5rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 1rem;
-      padding: 1rem 1.1rem;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07);
-    }
-
-    .grid {
-      display: grid;
-      gap: 1.2rem;
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr);
-      gap: 1.5rem;
-      align-items: flex-start;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.5rem;
-    }
-
-    .pill {
-      font-size: 0.78rem;
-      padding: 0.18rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #4b5563;
-      background: rgba(255, 255, 255, 0.7);
-    }
-
-    .lesson-list {
-      list-style: none;
-      margin-top: 0.6rem;
-    }
-
-    .lesson-list li {
-      padding: 0.55rem 0;
-      border-bottom: 1px dashed rgba(226, 232, 240, 0.9);
-      font-size: 0.9rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-
-    .lesson-list span.tag {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .about-box {
-      background: var(--card-bg);
-      border-radius: 1.1rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 1rem 1.1rem;
-      box-shadow: 0 8px 20px rgba(148, 163, 184, 0.3);
-    }
-
-    .about-box h3 {
-      margin-bottom: 0.35rem;
-    }
-
-    .about-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .contact-box {
-      background: var(--card-bg);
-      border-radius: 1.1rem;
-      padding: 1rem 1.1rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-    }
-
-    .contact-box p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .contact-box a.link {
-      color: var(--primary-dark);
-      font-weight: 600;
-    }
-
-    footer {
-      padding-top: 2.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
       text-align: center;
     }
 
-    footer a {
-      color: var(--primary-dark);
+    p.sub {
+      margin: 0 0 1rem 0;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.95rem;
+      max-width: 600px;
     }
 
-    details {
-      margin-top: 0.8rem;
+    .note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
-    details > summary {
-      list-style: none;
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 3/4;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #020617;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
     }
 
-    details > summary::-webkit-details-marker {
-      display: none;
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1); /* mirror like a selfie */
     }
 
-    @media (max-width: 840px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding: 1.5rem 1.2rem;
+    .frame-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .controls {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    button {
+      border-radius: 999px;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #020617;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #4b5563;
+      color: #e5e7eb;
+    }
+
+    .small-text {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.7rem;
+      text-align: center;
+      max-width: 540px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.4rem;
       }
-
-      .two-col {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        width: 100%;
-        justify-content: flex-start;
-        overflow-x: auto;
+      .video-wrapper {
+        max-width: 100%;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <nav class="nav">
-      <div class="logo">
-        <span class="eye">👁️</span>
-        <span>EyeKnowMD</span>
-      </div>
-      <div class="nav-links">
-        <a href="#learn">Learn</a>
-        <a href="#lesson-pd">PD Lesson</a>
-        <a href="#students">For Students</a>
-        <a href="#topics">Topics</a>
-        <a href="#about">About</a>
-        <a href="#directory">Directory</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+    <div class="logo">
+      <span class="eye">👁️</span>
+      <span>EyeKnowMD</span>
+    </div>
+    <a href="/">← Back to main site</a>
   </header>
 
   <main>
-    <!-- Hero (always visible) -->
-    <section class="hero" id="top">
-      <div>
-        <div class="badge">
-          Evidence-based • Easy to understand
-        </div>
-        <h1>
-          EyeKnowMD — <span class="highlight">Clear Vision, Clear Knowledge</span>
-        </h1>
-        <p class="sub">
-          Simple, trustworthy education about <strong>opticianry, optometry, ophthalmic disease</strong>, and
-          everyday <strong>eye care</strong> — created for students, patients, and anyone who wants to understand their eyes better.
-        </p>
-        <div class="hero-actions">
-          <a href="#lesson-pd">
-            <button class="btn btn-primary">
-              Start Learning Now →
-            </button>
-          </a>
-          <a href="#topics">
-            <button class="btn btn-ghost">
-              Browse Eye Topics
-            </button>
-          </a>
-        </div>
-        <div class="hero-meta">
-          <span>✅ Patient-friendly explanations</span>
-          <span class="dot"></span>
-          <span>📚 Optician / optometry focused</span>
-          <span class="dot"></span>
-          <span>🧠 Created by an Eye Care Educator</span>
-        </div>
-      </div>
+    <h1>Try Frames Online (Beta)</h1>
+    <p class="sub">
+      Turn on your camera to see how frames might look on your face. This is for fun and education only &mdash;
+      not a substitute for in-person fitting.
+    </p>
+    <p class="note">
+      🔒 Camera access stays in your browser. EyeKnowMD does not record or save any images.
+    </p>
 
-      <aside class="hero-card" aria-label="Quick learning snapshot">
-        <div class="hero-card-title">
-          <span>Today’s Focus: “What does my glasses prescription mean?”</span>
-          <span class="chip">Mini Lesson</span>
-        </div>
-        <p>
-          Your glasses Rx is a recipe that tells the lab how to bend light so it lands sharply on your retina.
-          Each line has a job:
-        </p>
-        <ul class="hero-list">
-          <li>
-            <span class="icon">•</span>
-            <span><strong>Sphere (SPH)</strong> — how short- or long-sighted you are.</span>
-          </li>
-          <li>
-            <span class="icon">•</span>
-            <span><strong>Cylinder (CYL)</strong> &amp; <strong>Axis</strong> — astigmatism (how “stretched” the focus is and in which direction).</span>
-          </li>
-          <li>
-            <span class="icon">•</span>
-            <span><strong>Add</strong> — extra power at near for reading / multifocals.</span>
-          </li>
-        </ul>
-        <p class="hero-tagline">
-          On EyeKnowMD, you’ll find similar short lessons on PD, base curve, progressive lenses, cataracts,
-          glaucoma, dry eye and more — all in plain language.
-        </p>
-      </aside>
-    </section>
+    <div class="video-wrapper">
+      <video id="video" autoplay playsinline></video>
+      <!-- Change "frame1.png" to match your uploaded file name -->
+      <img src="frame1.png" alt="Frame overlay" class="frame-overlay" id="frameOverlay">
+    </div>
 
-    <!-- Learn basics (click-to-expand) -->
-    <section id="learn">
-      <details class="card" open>
-        <summary style="cursor:pointer;font-size:1.2rem;font-weight:700;">
-          📗 Start with the basics of eye &amp; lens education
-        </summary>
-        <p class="lead" style="margin-top:0.8rem;">
-          EyeKnowMD begins with <strong>Eye Care and Opticianry Education</strong>. These core areas will grow into
-          step-by-step guides, diagrams, and short lessons you can read in a few minutes.
-        </p>
+    <div class="controls">
+      <button class="btn-primary" id="startBtn">Start camera</button>
+      <button class="btn-secondary" id="biggerBtn">Frame bigger</button>
+      <button class="btn-secondary" id="smallerBtn">Frame smaller</button>
+      <button class="btn-secondary" id="upBtn">Up</button>
+      <button class="btn-secondary" id="downBtn">Down</button>
+    </div>
 
-        <div class="grid grid-3">
-          <article class="card">
-            <h3>Opticianry Foundations</h3>
-            <p>
-              Understand prescriptions, PD, lenses, frames, and how everything works together to give clear vision.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Glasses Rx explained</span>
-              <span class="pill">PD &amp; fitting</span>
-              <span class="pill">Lens types</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Optometry &amp; Refraction</h3>
-            <p>
-              Learn what happens in the exam room — visual acuity, refraction, and how optometrists decide on your
-              final prescription.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Eye exam steps</span>
-              <span class="pill">Refraction basics</span>
-              <span class="pill">Binocular vision</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Eye Care &amp; Daily Habits</h3>
-            <p>
-              Simple, practical tips to protect your eyes: screen use, contact lens safety, UV protection, and when to
-              see an eye care professional.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Screen breaks</span>
-              <span class="pill">Dry eye relief</span>
-              <span class="pill">Blue light &amp; UV</span>
-            </div>
-          </article>
-        </div>
-      </details>
-    </section>
-
-    <!-- Lesson 1: PD (click-to-expand) -->
-    <section id="lesson-pd">
-      <details class="card">
-        <summary style="cursor:pointer;font-size:1.2rem;font-weight:700;">
-          📘 Lesson 1 — What Is Pupillary Distance (PD)?
-        </summary>
-
-        <p class="lead" style="margin-top:0.8rem;">
-          <strong>Pupillary Distance (PD)</strong> is the distance between the centers of your pupils.
-          It tells the lab exactly where to place the optical centers of your lenses so you see clearly and comfortably.
-        </p>
-
-        <div class="two-col">
-          <div class="card">
-            <h3>Why PD matters</h3>
-            <p>
-              If the PD is off by even a few millimetres, you may notice:
-            </p>
-            <ul class="hero-list" style="margin-top:0.4rem;">
-              <li><span class="icon">•</span><span>Eye strain or headaches, especially with new glasses.</span></li>
-              <li><span class="icon">•</span><span>Vision that feels “off centre” or slightly distorted.</span></li>
-              <li><span class="icon">•</span><span>Progressive lenses that feel misaligned or “swimmy”.</span></li>
-              <li><span class="icon">•</span><span>Unwanted prism effect in the lenses.</span></li>
-            </ul>
-            <p style="margin-top:0.6rem;">
-              A correct PD helps line up the optics of the lens with the visual system of the patient,
-              giving sharper and more relaxed vision.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Types of PD</h3>
-            <p>In practice, we talk about two main PDs:</p>
-            <ul class="hero-list" style="margin-top:0.4rem;">
-              <li>
-                <span class="icon">•</span>
-                <span>
-                  <strong>Distance PD</strong> — measured while the patient looks far away.
-                  Used for single-vision distance and the distance portion of progressives.
-                </span>
-              </li>
-              <li>
-                <span class="icon">•</span>
-                <span>
-                  <strong>Near PD</strong> — measured for reading (around 40 cm).
-                  Usually 2–3 mm smaller <em>per eye</em> than the distance PD because the eyes converge inwards.
-                </span>
-              </li>
-            </ul>
-            <p style="margin-top:0.6rem;">
-              Example: if the distance PD is <strong>64 mm</strong> and the near PD is <strong>60 mm</strong>,
-              the eyes have moved in by about <strong>2 mm per eye</strong> at near.
-            </p>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:1.2rem;">
-          <h3>Quick practice example</h3>
-          <p>
-            A frame has a geometric centre distance (Frame PD) of <strong>70 mm</strong> and the patient’s distance PD
-            is <strong>64 mm</strong>.
-          </p>
-          <ul class="hero-list" style="margin-top:0.4rem;">
-            <li><span class="icon">•</span><span>Total horizontal decentration = 70 − 64 = <strong>6 mm</strong>.</span></li>
-            <li><span class="icon">•</span><span>Per eye = 6 ÷ 2 = <strong>3 mm inward (nasally)</strong> for each lens.</span></li>
-          </ul>
-          <p style="margin-top:0.5rem;font-size:0.88rem;color:var(--muted);">
-            This calculation is fundamental in opticianry and helps ensure the lenses are positioned correctly in front of each eye.
-          </p>
-        </div>
-      </details>
-    </section>
-
-    <!-- For Students (click-to-expand wrapper) -->
-    <section id="students">
-      <details class="card">
-        <summary style="cursor:pointer;font-size:1.2rem;font-weight:700;">
-          🎓 For Students — Exam &amp; Practice Zone
-        </summary>
-
-        <p class="lead" style="margin-top:0.8rem;">
-          This area is for opticianry, optometry and eye care students who want short exam-style questions,
-          case histories, and quick revision of key concepts.
-        </p>
-
-        <div class="two-col">
-          <!-- MCQs -->
-          <div class="card">
-            <h3>Quick MCQs</h3>
-            <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.6rem;">
-              Click each question to reveal the answer and explanation.
-            </p>
-
-            <!-- MCQ 1 -->
-            <details class="mcq">
-              <summary><strong>MCQ 1.</strong> A patient’s distance PD is 64 mm and the frame PD is 70 mm. How much decentration is needed and in which direction (per eye)?</summary>
-              <div style="margin-top:0.4rem;">
-                <p><strong>Answer:</strong> 3 mm inward (nasally) per eye.</p>
-                <p style="font-size:0.85rem;color:var(--muted);">
-                  Calculation: Total decentration = 70 − 64 = 6 mm. Per eye = 6 ÷ 2 = 3 mm.
-                  Because the frame PD is larger than the patient PD, each OC must be moved inward.
-                </p>
-              </div>
-            </details>
-
-            <!-- MCQ 2 -->
-            <details class="mcq">
-              <summary><strong>MCQ 2.</strong> A wrong PD was used: true PD = 62 mm, glasses made at 66 mm. What symptoms is the patient most likely to report?</summary>
-              <div style="margin-top:0.4rem;">
-                <p><strong>Answer:</strong> Headache, eye strain and “pulled” or shifted vision, especially with prolonged wear.</p>
-                <p style="font-size:0.85rem;color:var(--muted);">
-                  Error = 4 mm total (2 mm per eye), creating unwanted prism. The prescription power can be correct,
-                  but the mis-centring causes asthenopia.
-                </p>
-              </div>
-            </details>
-
-            <!-- MCQ 3 -->
-            <details class="mcq">
-              <summary><strong>MCQ 3.</strong> For progressive lenses, which PD is used to place the distance reference point?</summary>
-              <div style="margin-top:0.4rem;">
-                <p><strong>Answer:</strong> The <strong>distance monocular PD</strong> for each eye.</p>
-                <p style="font-size:0.85rem;color:var(--muted);">
-                  The near inset for progressives is built into the design. You mark and block using the monocular
-                  distance PDs, then the lens design handles the near zone position.
-                </p>
-              </div>
-            </details>
-          </div>
-
-          <!-- Case histories -->
-          <div class="card">
-            <h3>Case histories</h3>
-            <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.6rem;">
-              Short real-life style scenarios to help you connect theory with patients.
-            </p>
-
-            <!-- Case 1 -->
-            <details>
-              <summary><strong>Case 1.</strong> Wrong PD in single-vision lenses (headache &amp; strain)</summary>
-              <div style="margin-top:0.4rem;">
-                <p>
-                  A 34-year-old myope with OD −3.50 DS, OS −3.25 DS receives new single-vision distance glasses.
-                  True PD = 64 mm but was recorded as 68 mm. Within hours, the patient reports frontal headache,
-                  eye strain and slight dizziness while walking.
-                </p>
-                <p style="margin-top:0.4rem;">
-                  <strong>Teaching point:</strong> A 4 mm total PD error (2 mm per eye) produces unwanted horizontal
-                  prism. Always verify PD as carefully as you verify sphere, cylinder and axis.
-                </p>
-              </div>
-            </details>
-
-            <!-- Case 2 -->
-            <details>
-              <summary><strong>Case 2.</strong> Progressive non-adapt due to incorrect fitting height</summary>
-              <div style="margin-top:0.4rem;">
-                <p>
-                  A patient switching from bifocals to progressives complains that they must lift their chin
-                  to see clearly in the distance. PD is correct, Rx is correct, but fitting cross was placed too low.
-                </p>
-                <p style="margin-top:0.4rem;">
-                  <strong>Teaching point:</strong> For progressives, accurate fitting height is critical.
-                  If the distance zone is cut off, patients will not adapt even with perfect optics.
-                </p>
-              </div>
-            </details>
-
-            <!-- Case 3 -->
-            <details>
-              <summary><strong>Case 3.</strong> High astigmatism &amp; off-axis cylinder</summary>
-              <div style="margin-top:0.4rem;">
-                <p>
-                  A patient with −1.00 −2.75 × 180 complains that straight lines look tilted through new glasses.
-                  The cylinder power is correct, but the finished axis is 10° off.
-                </p>
-                <p style="margin-top:0.4rem;">
-                  <strong>Teaching point:</strong> In higher cylinder powers, axis errors are very symptomatic.
-                  Axis tolerances become tighter as cylinder power increases.
-                </p>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <!-- PD Case history (inside students area) -->
-        <div class="card" style="margin-top:1.2rem;">
-          <h3>Extra PD case — Click to expand</h3>
-          <details>
-            <summary>📖 Case History — What Happens When PD Is Measured Wrong?</summary>
-            <div style="margin-top:0.6rem;">
-              <div class="card">
-                <h4>Patient profile</h4>
-                <ul class="hero-list">
-                  <li><span class="icon">•</span><span><strong>Age:</strong> 34 years</span></li>
-                  <li><span class="icon">•</span><span><strong>Prescription:</strong> OD −3.50 DS | OS −3.25 DS</span></li>
-                  <li><span class="icon">•</span><span><strong>Lens type:</strong> Single-vision distance</span></li>
-                  <li><span class="icon">•</span><span><strong>Frame:</strong> Medium plastic frame</span></li>
-                </ul>
-              </div>
-
-              <div class="two-col">
-                <div class="card">
-                  <h4>What went wrong</h4>
-                  <p>
-                    True distance PD was <strong>64 mm</strong>, but it was mistakenly recorded as
-                    <strong>68 mm</strong>. This created a total error of <strong>4 mm</strong>,
-                    or <strong>2 mm per eye outward</strong>, leading to unwanted horizontal prism.
-                  </p>
-                </div>
-                <div class="card">
-                  <h4>Patient complaints</h4>
-                  <ul class="hero-list">
-                    <li><span class="icon">•</span><span>Headache across the forehead</span></li>
-                    <li><span class="icon">•</span><span>Eye strain after 20–30 minutes</span></li>
-                    <li><span class="icon">•</span><span>Objects felt slightly “shifted”</span></li>
-                    <li><span class="icon">•</span><span>Mild dizziness while walking</span></li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="card">
-                <h4>Solution &amp; learning points</h4>
-                <p>
-                  PD was re-measured accurately as <strong>64 mm</strong> and lenses were remade with correct centration.
-                  Symptoms resolved.
-                </p>
-                <ul class="hero-list">
-                  <li><span class="icon">•</span><span>Even <strong>2 mm per eye</strong> PD error can cause symptoms.</span></li>
-                  <li><span class="icon">•</span><span>Wrong PD creates <strong>unwanted prism</strong>.</span></li>
-                  <li><span class="icon">•</span><span>Patients often think the prescription is wrong, not the measurements.</span></li>
-                  <li><span class="icon">•</span><span><strong>PD is as critical as sphere, cylinder, and axis.</strong></span></li>
-                </ul>
-              </div>
-            </div>
-          </details>
-        </div>
-
-        <p style="font-size:0.85rem;color:var(--muted);margin-top:1.2rem;">
-          More student content will be added over time, including neutralisation drills, prism questions, and
-          progressive fitting scenarios.
-        </p>
-      </details>
-    </section>
-
-    <!-- Topics (click-to-expand) -->
-    <section id="topics">
-      <details class="card">
-        <summary style="cursor:pointer;font-size:1.2rem;font-weight:700;">
-          📚 Eye topics we’ll cover
-        </summary>
-
-        <p class="lead" style="margin-top:0.8rem;">
-          As EyeKnowMD grows, these categories will expand into short articles, infographics, and revision notes —
-          useful for both <strong>patients</strong> and <strong>students</strong>.
-        </p>
-
-        <div class="two-col">
-          <div class="card">
-            <h3>Sample mini-lessons</h3>
-            <ul class="lesson-list">
-              <li>
-                <span>What is PD (Pupillary Distance) and why does it matter?</span>
-                <span class="tag">Opticianry</span>
-              </li>
-              <li>
-                <span>Single-vision vs bifocal vs progressive lenses</span>
-                <span class="tag">Lenses</span>
-              </li>
-              <li>
-                <span>“I have astigmatism” — what does that actually mean?</span>
-                <span class="tag">Optometry</span>
-              </li>
-              <li>
-                <span>Common eye diseases: cataract, glaucoma, diabetic eye changes</span>
-                <span class="tag">Ophthalmic disease</span>
-              </li>
-              <li>
-                <span>Contact lens do’s &amp; don’ts (the safe way!)</span>
-                <span class="tag">Eye care</span>
-              </li>
-            </ul>
-            <p style="font-size:0.85rem;color:var(--muted);margin-top:0.6rem;">
-              More lessons will be added over time — this site is designed to grow with new topics and visuals.
-            </p>
-          </div>
-
-          <div class="grid">
-            <article class="card">
-              <h3>For students &amp; trainees</h3>
-              <p>
-                Quick refreshers on key concepts for opticianry and optometry students — written in a way that is easy
-                to review before exams or practicals.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3>For patients &amp; families</h3>
-              <p>
-                No heavy jargon. Just clear explanations you can take to your next appointment and feel more confident
-                about your eye health.
-              </p>
-            </article>
-          </div>
-        </div>
-      </details>
-    </section>
-
-    <!-- About (click-to-expand) -->
-    <section id="about">
-      <details class="card">
-        <summary style="cursor:pointer;font-size:1.2rem;font-weight:700;">
-          👤 About EyeKnowMD &amp; Niamul Hasan
-        </summary>
-
-        <p class="lead" style="margin-top:0.8rem;">
-          EyeKnowMD is an education-focused project created by
-          <strong>Niamul Hasan</strong>, an <strong>Eye Care Educator &amp; Patient Services Specialist</strong>
-          with hands-on experience in opticianry, lensometry, and patient-centered optical care.
-        </p>
-
-        <div class="two-col">
-          <div class="about-box">
-            <img src="P2_123k.jpg" alt="Niamul Hasan" style="width:190px;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,0.18);margin-bottom:16px;">
-            <h3>Niamul Hasan</h3>
-            <p class="about-meta">
-              Eye Care Educator • Patient Services Specialist
-            </p>
-            <p>
-              Every day in clinic, people leave with questions: “What is astigmatism?”, “Why do I need progressives?”,
-              “Is screen time ruining my eyes?”.
-            </p>
-            <p style="margin-top:0.5rem;">
-              I created <strong>EyeKnowMD</strong> to answer those questions clearly. My focus is to:
-            </p>
-            <ul class="hero-list" style="margin-top:0.5rem;">
-              <li><span class="icon">•</span><span>Give patients simple, trustworthy explanations of their prescriptions and eye conditions.</span></li>
-              <li><span class="icon">•</span><span>Support opticianry and optometry students with exam-style concepts and practical examples.</span></li>
-              <li><span class="icon">•</span><span>Help new clinic staff understand the “language” of eye care.</span></li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>What you can expect here</h3>
-            <p>
-              EyeKnowMD combines clinical experience with clear teaching. Content is designed to be:
-            </p>
-            <ul class="hero-list" style="margin-top:0.5rem;">
-              <li><span class="icon">•</span><span><strong>Evidence-based</strong>, but explained in plain language.</span></li>
-              <li><span class="icon">•</span><span><strong>Practical</strong> — focused on real prescriptions, lenses, and everyday eye problems.</span></li>
-              <li><span class="icon">•</span><span><strong>Exam-friendly</strong> — helpful for students reviewing key optical concepts.</span></li>
-            </ul>
-            <p style="margin-top:0.6rem;font-size:0.85rem;color:var(--muted);">
-              Over time, this will grow into a collection of lessons, diagrams, and revision notes you can revisit anytime.
-            </p>
-          </div>
-        </div>
-      </details>
-    </section>
-
-    <!-- Directory (click-to-expand) -->
-    <section id="directory">
-      <details class="card">
-        <summary style="cursor:pointer;font-size:1.2rem;font-weight:700;">
-          📍 Find an Eye Care Provider
-        </summary>
-
-        <p class="lead" style="margin-top:0.8rem;">
-          This directory is for educational and convenience purposes only. Always confirm hours, services,
-          and coverage directly with the clinic.
-        </p>
-
-        <!-- Public clinic list with phone numbers -->
-        <div class="card">
-          <h3>Clinics &amp; Optical Stores (Public Info)</h3>
-          <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.6rem;">
-            The entries below use only publicly available business information (for example from clinic websites
-            and Google Maps). Do not include private mobile numbers or personal contact details.
-          </p>
-
-          <ul class="hero-list">
-            <!-- EXAMPLE ITEMS – replace with real, public clinics in your area -->
-            <li>
-              <span class="icon">•</span>
-              <span>
-                <strong>Example EyeCare Optometry</strong> — Winnipeg, MB<br>
-                Phone: <a href="tel:2045551234">(204) 555-1234</a><br>
-                Website:
-                <a class="link" href="https://www.example-eyecare.ca" target="_blank" rel="noopener">
-                  example-eyecare.ca
-                </a>
-              </span>
-            </li>
-            <li>
-              <span class="icon">•</span>
-              <span>
-                <strong>Sample Vision Optical</strong> — Toronto, ON<br>
-                Phone: <a href="tel:4165555678">(416) 555-5678</a><br>
-                Website:
-                <a class="link" href="https://www.samplevision.ca" target="_blank" rel="noopener">
-                  samplevision.ca
-                </a>
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Clinic submission -->
-        <div class="card" style="margin-top:1.4rem;">
-          <h3>Clinic owners: add or update your listing</h3>
-          <p>
-            If you are an optometrist or optical store owner and would like to be listed (or update your
-            information), please email the following details:
-          </p>
-          <ul class="hero-list">
-            <li><span class="icon">•</span><span>Clinic / Optical store name</span></li>
-            <li><span class="icon">•</span><span>City &amp; province</span></li>
-            <li><span class="icon">•</span><span>Public phone number</span></li>
-            <li><span class="icon">•</span><span>Website (if available)</span></li>
-            <li><span class="icon">•</span><span>Short note about services (optional)</span></li>
-          </ul>
-          <p style="margin-top:0.6rem;">
-            📧 Email:
-            <a class="link" href="mailto:edu@eyeknowmd.com?subject=Clinic%20listing%20request">
-              edu@eyeknowmd.com
-            </a>
-          </p>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:0.4rem;">
-            By sending your details, you confirm that the contact information is public and you consent to it
-            being displayed on EyeKnowMD.
-          </p>
-        </div>
-
-        <!-- City-based list without phone numbers -->
-        <div class="card" style="margin-top:1.4rem;">
-          <h3>Browse by city (names only)</h3>
-          <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.6rem;">
-            For a quick overview, here are clinic names grouped by city. Phone numbers are not shown in this list.
-          </p>
-
-          <div class="two-col">
-            <div>
-              <h4>Winnipeg, MB</h4>
-              <ul class="hero-list">
-                <li><span class="icon">•</span><span>Example EyeCare Optometry</span></li>
-                <li><span class="icon">•</span><span>River Heights Vision Clinic</span></li>
-                <li><span class="icon">•</span><span>Downtown Optical Centre</span></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Toronto, ON</h4>
-              <ul class="hero-list">
-                <li><span class="icon">•</span><span>Sample Vision Optical</span></li>
-                <li><span class="icon">•</span><span>CityView Eye Clinic</span></li>
-                <li><span class="icon">•</span><span>North York EyeCare</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:0.8rem;">
-            You can look up more details for any clinic by searching its name in Google Maps or on its official website.
-          </p>
-        </div>
-      </details>
-    </section>
-
-    <!-- Contact (click-to-expand) -->
-    <section id="contact">
-      <details class="card">
-        <summary style="cursor:pointer;font-size:1.2rem;font-weight:700;">
-          ✉️ Contact &amp; feedback
-        </summary>
-
-        <p class="lead" style="margin-top:0.8rem;">
-          Have a topic you’d like explained? Confused about PD, prescriptions, progressives or exam concepts?
-          You’re welcome to reach out.
-        </p>
-
-        <div class="contact-box">
-          <p>
-            For general questions, feedback, or education requests, you can email me directly:
-          </p>
-          <p>
-            📧 Email:
-            <a class="link" href="mailto:edu@eyeknowmd.com">edu@eyeknowmd.com</a>
-          </p>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:0.4rem;">
-            *EyeKnowMD is an educational resource only and does not replace a comprehensive eye examination or
-            medical advice from your own eye care professional.*
-          </p>
-        </div>
-      </details>
-    </section>
-
-    <!-- Legal Disclaimer footer -->
-    <footer id="disclaimer" style="margin-top:2rem;padding:1.5rem 0 2rem 0;font-size:0.8rem;color:var(--muted);border-top:1px solid rgba(0,0,0,0.05);">
-      <div class="container" style="max-width:900px;margin:0 auto;">
-        <p>
-          <strong>Disclaimer:</strong> EyeKnowMD is an educational resource only. The information on this site
-          does not replace a comprehensive eye examination, diagnosis, or treatment from an optometrist,
-          ophthalmologist, or other licensed health professional.
-        </p>
-        <p style="margin-top:0.4rem;">
-          Always follow the advice of your own eye care provider. If you have sudden changes in vision, eye pain,
-          flashes of light, or other urgent symptoms, seek in-person care immediately.
-        </p>
-        <p style="margin-top:0.8rem;">
-          © <span id="year"></span> EyeKnowMD. All rights reserved. &nbsp;•&nbsp; Educational content only — this site does not provide personal medical advice.
-        </p>
-      </div>
-    </footer>
+    <p class="small-text">
+      Tip: Center your face in the frame. Adjust the overlay size and position so the virtual frame roughly matches
+      your pupil height and width. For clinical or dispensing decisions, always use a proper in-person fitting.
+    </p>
   </main>
 
   <script>
-    // Set current year automatically
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const video = document.getElementById('video');
+    const startBtn = document.getElementById('startBtn');
+    const frameOverlay = document.getElementById('frameOverlay');
+
+    let currentScale = 1.0;
+    let offsetY = 0;
+
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (err) {
+        alert('Could not access camera. Please check permissions and HTTPS connection.');
+        console.error(err);
+      }
+    }
+
+    startBtn.addEventListener('click', startCamera);
+
+    document.getElementById('biggerBtn').addEventListener('click', () => {
+      currentScale += 0.05;
+      frameOverlay.style.transform = `translate(-50%, calc(-50% + ${offsetY}px)) scale(${currentScale})`;
+    });
+
+    document.getElementById('smallerBtn').addEventListener('click', () => {
+      currentScale = Math.max(0.5, currentScale - 0.05);
+      frameOverlay.style.transform = `translate(-50%, calc(-50% + ${offsetY}px)) scale(${currentScale})`;
+    });
+
+    document.getElementById('upBtn').addEventListener('click', () => {
+      offsetY -= 5;
+      frameOverlay.style.transform = `translate(-50%, calc(-50% + ${offsetY}px)) scale(${currentScale})`;
+    });
+
+    document.getElementById('downBtn').addEventListener('click', () => {
+      offsetY += 5;
+      frameOverlay.style.transform = `translate(-50%, calc(-50% + ${offsetY}px)) scale(${currentScale})`;
+    });
   </script>
 </body>
 </html>
