@@ -1,278 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>EyeKnowMD – Clear Vision, Clear Knowledge</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Simple, trustworthy education about opticianry, optometry, ophthalmic disease, and everyday eye care.">
-
-  <style>
-    :root {
-      --primary: #0b8793;
-      --primary-dark: #0a6b74;
-      --bg: #f5f7fb;
-      --text: #1f2933;
-      --muted: #6b7280;
-      --card: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EyeKnowMD — Clear Vision, Clear Knowledge</title>
+<style>
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f8fafc;
+        color: #0f172a;
+        line-height: 1.6;
     }
-
     header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 0.8rem 1.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+        background: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e2e8f0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
     }
-
-    header strong {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
+    header h1 {
+        font-size: 1.3rem;
+        margin: 0;
+        color: #0b8793;
     }
-
     nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 500;
+        margin-left: 1rem;
+        text-decoration: none;
+        color: #334155;
+        font-weight: 500;
     }
-
-    nav a:hover {
-      color: var(--primary);
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 2rem;
     }
-
-    .hero {
-      padding: 3rem 1rem;
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #e0f2fe;
-      color: #0369a1;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero p {
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin-right: 0.6rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-
-    .btn-outline {
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      background: transparent;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 1rem;
-      padding: 1.2rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0.5rem;
+        color: #0b8793;
+        margin-top: 2rem;
     }
-
-    ul {
-      margin-left: 1.2rem;
+    h3 {
+        color: #0b8793;
     }
-
+    .tag {
+        background: #e0f7fa;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        color: #0b8793;
+        font-weight: bold;
+    }
+    .box {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        margin-bottom: 1.5rem;
+    }
     footer {
-      margin-top: 3rem;
-      background: #ffffff;
-      border-top: 1px solid #e5e7eb;
-      padding: 2rem 1rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-align: center;
+        background: white;
+        border-top: 1px solid #e2e8f0;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 3rem;
+        font-size: 0.9rem;
+        color: #475569;
     }
-
-    details {
-      background: var(--card);
-      padding: 1rem;
-      border-radius: 0.8rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      margin-top: 0.8rem;
-      cursor: pointer;
-    }
-
-    summary {
-      font-weight: 600;
-    }
-
-    @media (max-width: 800px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
 <header>
-  <strong>👁️ EyeKnowMD</strong>
-  <nav>
-    <a href="#lessons">Learn</a>
-    <a href="#students">For Students</a>
-    <a href="#about">About</a>
-    <a href="#directory">Directory</a>
-    <a href="#contact">Contact</a>
-    <a href="/try.html">Try Frames</a>
-  </nav>
+    <h1>👁️ EyeKnowMD</h1>
+    <nav>
+        <a href="#learn">Learn</a>
+        <a href="#topics">Topics</a>
+        <a href="#students">Students</a>
+        <a href="#directory">Directory</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<div class="hero">
-  <div>
-    <span class="badge">Evidence-based • Easy to understand</span>
-    <h1>Clear Vision, Clear Knowledge</h1>
-    <p>
-      Simple, trustworthy education about opticianry, optometry, ophthalmic disease,
-      and everyday eye care — created for students, patients, and anyone who wants
-      to understand their eyes better.
-    </p>
-    <div class="buttons">
-      <a href="#lessons" class="btn-primary">Start Learning</a>
-      <a href="#topics" class="btn-outline">Browse Topics</a>
-    </div>
-  </div>
+<div class="container">
 
-  <div class="card">
-    <h3>Today’s Focus</h3>
-    <p><strong>What does my glasses prescription mean?</strong></p>
-    <ul>
-      <li><strong>SPH:</strong> short or long sighted power</li>
-      <li><strong>CYL & Axis:</strong> astigmatism</li>
-      <li><strong>Add:</strong> near reading power</li>
-    </ul>
-  </div>
+<!-- HERO -->
+<h2>EyeKnowMD — Clear Vision, Clear Knowledge</h2>
+<p class="tag">Evidence-based • Easy to understand</p>
+
+<div class="box">
+    <p>Simple, trustworthy education about <strong>opticianry</strong>, <strong>optometry</strong>, <strong>ophthalmic disease</strong>, and everyday eye care — created for students, patients, and anyone who wants to understand their eyes better.</p>
 </div>
 
-<section id="lessons">
-  <h2>Lesson 1 — What is Pupillary Distance (PD)?</h2>
-  <p>PD is the distance between the centers of your pupils. It tells the lab where to place the optical centers of your lenses.</p>
+<a href="#learn">Start Learning Now →</a>
 
-  <details>
-    <summary>Why PD matters</summary>
+<!-- MINI LESSON -->
+<h2 id="learn">Today’s Focus: “What does my glasses prescription mean?”</h2>
+<div class="box">
     <ul>
-      <li>Headaches and eye strain</li>
-      <li>Distorted vision</li>
-      <li>Unwanted prism</li>
+        <li><strong>Sphere (SPH)</strong> — how short- or long-sighted you are.</li>
+        <li><strong>Cylinder (CYL)</strong> & Axis — astigmatism (shape + direction).</li>
+        <li><strong>Add</strong> — near power for reading/multifocals.</li>
     </ul>
-  </details>
+    <p>On EyeKnowMD, you'll find similar short lessons on PD, base curve, progressives, cataracts, glaucoma, dry eye, and more.</p>
+</div>
 
-  <details>
-    <summary>Types of PD</summary>
-    <p>Distance PD is used for far vision. Near PD is used for reading.</p>
-  </details>
-</section>
+<!-- PD LESSON -->
+<h2>Lesson 1 — What Is Pupillary Distance (PD)?</h2>
+<div class="box">
+    <p>PD is the distance between pupil centers. If PD is wrong, the lenses do not align properly, causing:</p>
+    <ul>
+        <li>Headaches</li>
+        <li>Eye strain</li>
+        <li>Distortion or misalignment</li>
+        <li>Unwanted prism</li>
+    </ul>
+</div>
 
-<section id="students">
-  <h2>For Students — Exam & Practice Zone</h2>
+<!-- STUDENT SECTION -->
+<h2 id="students">For Students — Exam & Practice Zone</h2>
+<div class="box">
+    <h3>Quick MCQs</h3>
+    <p>Click each question to reveal the answer (expandable version can be added later).</p>
+    <ul>
+        <li>MCQ 1. Frame PD = 70, patient PD = 64 → 3 mm in each eye</li>
+        <li>MCQ 2. Wrong PD → headaches, distortion, discomfort</li>
+        <li>MCQ 3. Progressives use distance PD</li>
+    </ul>
 
-  <details>
-    <summary>MCQ 1 — PD Decentration</summary>
-    <p>Distance PD = 64 mm, Frame PD = 70 mm → 3 mm in per eye.</p>
-  </details>
+    <h3>Case Histories</h3>
+    <ul>
+        <li>Case 1: Wrong PD in SV lenses</li>
+        <li>Case 2: Progressive non-adapt</li>
+        <li>Case 3: Off-axis cylinder</li>
+    </ul>
+</div>
 
-  <details>
-    <summary>Case History — Wrong PD</summary>
-    <p>True PD 64 mm, glasses made at 68 mm → headache, dizziness, unwanted prism.</p>
-  </details>
-</section>
+<!-- DIRECTORY -->
+<h2 id="directory">Find an Eye Care Provider</h2>
+<div class="box">
+    <p>This directory uses only publicly available information (clinic websites, Google Maps).</p>
 
-<section id="about">
-  <h2>About EyeKnowMD</h2>
-  <p>
-    EyeKnowMD is created by <strong>Niamul Hasan</strong>, an
-    <strong>Eye Care Educator & Patient Services Specialist</strong> with hands-on experience in opticianry and lensometry.
-  </p>
-</section>
+    <h3>Clinics (Examples)</h3>
+    <ul>
+        <li>Example EyeCare Optometry — Winnipeg, MB</li>
+        <li>Sample Vision Optical — Toronto, ON</li>
+    </ul>
 
-<section id="directory">
-  <h2>Find an Eye Care Provider</h2>
-  <p>Example listings (public info only):</p>
-  <ul>
-    <li>Example EyeCare — Winnipeg</li>
-    <li>Sample Vision — Toronto</li>
-  </ul>
-  <p>Clinic owners may request listing via email.</p>
-</section>
+    <h3>Clinic owners: add yourself</h3>
+    <p>Email your clinic information to <strong>edu@eyeknowmd.com</strong>.</p>
+</div>
 
-<section id="contact">
-  <h2>Contact & Feedback</h2>
-  <p>Email: <strong>edu@eyeknowmd.com</strong></p>
-  <p><em>This site provides educational content only.</em></p>
-</section>
+<!-- ABOUT -->
+<h2 id="about">About EyeKnowMD</h2>
+<div class="box">
+    <img src="P2_123k.jpg" alt="Niamul Hasan" style="width:150px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.15);margin-bottom:10px;">
+    <h3>Niamul Hasan</h3>
+    <p>Eye Care Educator • Patient Services Specialist</p>
+    <p>I created EyeKnowMD to give patients and students clear, simple explanations about prescriptions, lenses, and eye health.</p>
+</div>
 
+<!-- CONTACT -->
+<h2 id="contact">Contact & Feedback</h2>
+<div class="box">
+    <p>Have questions or topics you want explained? Email anytime:</p>
+    <p><strong>📧 edu@eyeknowmd.com</strong></p>
+</div>
+
+<!-- DISCLAIMER -->
 <footer>
-  <p>
-    Disclaimer: EyeKnowMD is an educational resource only and does not replace professional eye care.
-  </p>
-  <p>© <span id="year"></span> EyeKnowMD</p>
+    <p><em>Disclaimer: EyeKnowMD is an educational resource. It does not replace a comprehensive eye examination or medical advice.</em></p>
+    <p>© 2025 EyeKnowMD. All rights reserved.</p>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
+</div>
 </body>
 </html>
