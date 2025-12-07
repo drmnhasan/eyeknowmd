@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Try Frames Online (Beta) - EyeKnowMD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    header .logo {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #e5e7eb;
+    }
+    header .logo span.eye {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 2px solid #22c55e;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+    header a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    header a:hover {
+      color: #e5e7eb;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem 2rem;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      margin-bottom: 0.3rem;
+      text-align: center;
+    }
+
+    p.sub {
+      margin: 0 0 1rem 0;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.95rem;
+      max-width: 650px;
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 3/4;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #020617;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1); /* mirror like a selfie */
+    }
+
+    .frame-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .controls {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    button {
+      border-radius: 999px;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #020617;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #4b5563;
+      color: #e5e7eb;
+    }
+
+    .small-text {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.7rem;
+      text-align: center;
+      max-width: 540px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+      .video-wrapper {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="eye">👁️</span>
+      <span>EyeKnowMD</span>
+    </div>
+    <a href="/">← Back to main site</a>
+  </header>
+
+  <main>
+    <h1>Try Frames Online (Beta)</h1>
+    <p class="sub">
+      Turn on your camera to see how frames might look on your face. This is for fun and education only —
+      not a substitute for in-person fitting or professional dispensing.
+    </p>
+    <p class="note">
+      🔒 Camera access stays in your browser. EyeKnowMD does not record or save any images.
+    </p>
+
+    <div class="video-wrapper">
+      <video id="video" autoplay playsinline></video>
+      <!-- Change 'frame1.png' to another filename if needed -->
+      <img src="frame1.png" alt="Frame overlay" class="frame-overlay" id="frameOverlay">
+    </div>
+
+    <div class="controls">
+      <button class="btn-primary" id="startBtn">Start camera</button>
+      <button class="btn-secondary" id="biggerBtn">Frame bigger</button>
+      <button class="btn-secondary" id="smallerBtn">Frame smaller</button>
+      <button class="btn-secondary" id="upBtn">Up</button>
+      <button class="btn-secondary" id="downBtn">Down</button>
+    </div>
+
+    <p class="small-text">
+      Tip: Center your face. Adjust the overlay until the frame roughly matches your eye level and head size.
+      For real prescriptions and final frame selection, always see an eye care professional in person.
+    </p>
+  </main>
+
+  <script>
+    const video = document.getElementById('video');
+    const startBtn = document.getElementById('startBtn');
+    const frameOverlay = document.getElementById('frameOverlay');
+
+    let currentScale = 1.0;
+    let offsetY = 0;
+
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (err) {
+        alert('Could not access camera. Please check permissions and HTTPS connection.');
+        console.error(err);
+      }
+    }
+
+    startBtn.addEventListener('click', startCamera);
+
+    document.getElementById('biggerBtn').addEventListener('click', () => {
+      currentScale += 0.05;
+      frameOverlay.style.transform = `translate(-50%, calc(-50% + ${offsetY}px)) scale(${currentScale})`;
+    });
+
+    document.getElementById('smallerBtn').addEventListener('click', () => {
+      currentScale = Math.max(0.5, currentScale - 0.05);
+      frameOverlay.style.transform = `translate(-50%, calc(-50% + ${offsetY}px)) scale(${currentScale})`;
+    });
+
+    document.getElementById('upBtn').addEventListener('click', () => {
+      offsetY -= 5;
+      frameOverlay.style.transform = `translate(-50%, calc(-50% + ${offsetY}px)) scale(${currentScale})`;
+    });
+
+    document.getElementById('downBtn').addEventListener('click', () => {
+      offsetY += 5;
+      frameOverlay.style.transform = `translate(-50%, calc(-50% + ${offsetY}px)) scale(${currentScale})`;
+    });
+  </script>
+</body>
+</html>
